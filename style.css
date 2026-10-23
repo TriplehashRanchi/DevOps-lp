@@ -300,9 +300,15 @@ body {
   display: inline-block;
 }
 
-.window-dot--red    { background: #FF5F56; }
-.window-dot--yellow { background: #FFBD2E; }
-.window-dot--green  { background: #27C93F; }
+.window-dot--red {
+  background: #ff5f56;
+}
+.window-dot--yellow {
+  background: #ffbd2e;
+}
+.window-dot--green {
+  background: #27c93f;
+}
 
 .video-wrap {
   position: relative;
@@ -590,7 +596,6 @@ body {
   margin-bottom: 1.25rem;
 }
 
- 
 .instructors-description {
   font-size: 1rem;
   font-weight: 500;
@@ -616,7 +621,7 @@ body {
   gap: 0.4rem;
   padding: 2rem 1.5rem;
   background: #ffffff;
-   border-radius: 1rem;
+  border-radius: 1rem;
   box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
   transition:
     transform 0.2s,
@@ -646,8 +651,6 @@ body {
   color: var(--text-primary);
   letter-spacing: 0.02em;
 }
-
-
 
 .instructors-cta {
   width: 100%;
@@ -679,7 +682,6 @@ body {
     gap: 1rem;
   }
 }
-
 
 /* ── SECTION: THE OLD WAY VS THE CLOUD TRAIN WAY ── */
 .comparison-section {
@@ -717,7 +719,6 @@ body {
   font-size: 1.05rem;
   color: var(--text-muted);
   line-height: 1.85;
-   font-weight: 500;
 }
 
 /* ── Comparison Grid ── */
@@ -729,37 +730,35 @@ body {
 }
 
 .comparison-col {
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 1.2rem;
   padding: 2.75rem 2rem 2.25rem;
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
   display: flex;
   flex-direction: column;
   gap: 1.75rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
   position: relative;
   margin-top: 1.5rem;
 }
- 
 
 .comparison-col--new {
-  border: 2px solid #2E67F5;
+  border: 2px solid #2e67f5;
   box-shadow: 0 16px 40px rgba(46, 103, 245, 0.1);
 }
 
-
- 
-
 .comparison-col__header {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .comparison-badge {
   display: inline-block;
@@ -773,53 +772,52 @@ body {
 }
 
 .comparison-badge--old {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.55rem;
-    color: #DC2626;
-    background: #FEF2F2;
-    border: 1.5px solid rgba(239, 68, 68, 0.35);
-    transform: rotate(-2.5deg);
-    white-space: nowrap;
-  }
-  
-  .comparison-badge--old svg {
-    width: 18px;
-    height: 18px;
-    stroke: currentColor;
-    flex-shrink: 0;
-    display: block;
-  }
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  transform: rotate(-2.5deg);
+  white-space: nowrap;
+}
+
+.comparison-badge--old svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  flex-shrink: 0;
+  display: block;
+}
 
 .comparison-badge--new {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #FFFFFF;
-    border: 1.5px solid #2E67F5;
-     transform: rotate(5deg);
-    padding: 0.1rem 1.75rem;
-    white-space: nowrap;
-    text-align: center;
-  }
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1.5px solid #2e67f5;
+  transform: rotate(5deg);
+  padding: 0.1rem 1.75rem;
+  white-space: nowrap;
+  text-align: center;
+}
 
 .badge-logo-img {
-    height: 52px;
-    width: auto;
-    object-fit: contain;
-    display: block;
-  }
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
 
 .badge-way-text {
   font-size: 0.85rem;
   font-weight: 800;
   letter-spacing: 0.12em;
-  color: #1A1AE0;
+  color: #1a1ae0;
 }
 
 /* ── Comparison List ── */
- 
 
 .badge-icon-cross {
   display: inline-flex;
@@ -828,8 +826,8 @@ body {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #EF4444;
-  color: #FFF;
+  background: #ef4444;
+  color: #fff;
   font-size: 0.65rem;
   margin-right: 0.4rem;
 }
@@ -841,8 +839,8 @@ body {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #10B981;
-  color: #FFF;
+  background: #10b981;
+  color: #fff;
   font-size: 0.65rem;
   margin-right: 0.4rem;
 }
@@ -897,28 +895,28 @@ body {
 .item-icon-badge--puzzle,
 .item-icon-badge--help,
 .item-icon-badge--eye {
-  background: #FFE8E8;
+  background: #ffe8e8;
 }
 
 /* Cloud Train Way Badges (Multi-tone Soft Badges matching reference) */
 .item-icon-badge--laptop {
-  background: #E0E7FF;
+  background: #e0e7ff;
 }
 
 .item-icon-badge--calendar {
-  background: #DCFCE7;
+  background: #dcfce7;
 }
 
 .item-icon-badge--workflow {
-  background: #EDE9FE;
+  background: #ede9fe;
 }
 
 .item-icon-badge--team {
-  background: #DBEAFE;
+  background: #dbeafe;
 }
 
 .item-icon-badge--growth {
-  background: #DCFCE7;
+  background: #dcfce7;
 }
 
 .item-content {
@@ -931,13 +929,13 @@ body {
 .item-heading {
   font-size: 1.05rem;
   font-weight: 800;
-  color: #0B0F19;
+  color: #0b0f19;
   line-height: 1.35;
 }
 
 .item-subheading {
   font-size: 0.9rem;
-  color: #5A6882;
+  color: #5a6882;
   line-height: 1.5;
   margin: 0;
 }
@@ -945,7 +943,7 @@ body {
 .item-text-bold {
   font-size: 1.02rem;
   font-weight: 700;
-  color: #0B0F19;
+  color: #0b0f19;
   line-height: 1.4;
 }
 
@@ -962,14 +960,13 @@ body {
   }
 }
 
-
 /* ==========================================================================
    WORKSHOP PURPOSE / SOLUTION SECTION
    ========================================================================== */
 .solution-section {
   background: var(--bg-page);
   border-top: none;
-padding: 0rem 1.5rem 6rem 1.5rem;
+  padding: 0rem 1.5rem 6rem 1.5rem;
   position: relative;
 }
 
@@ -988,14 +985,14 @@ padding: 0rem 1.5rem 6rem 1.5rem;
   font-size: clamp(2rem, 3.8vw, 2.75rem);
   font-weight: 900;
   line-height: 1.25;
-  color: #0B0F19;
+  color: #0b0f19;
   letter-spacing: -0.02em;
   margin-bottom: 1.25rem;
 }
 
 .solution-subtext {
   font-size: clamp(1rem, 1.4vw, 1.15rem);
-  color: #4B5563;
+  color: #4b5563;
   line-height: 1.65;
   max-width: 760px;
   margin: 0 auto;
@@ -1012,9 +1009,10 @@ padding: 0rem 1.5rem 6rem 1.5rem;
 }
 
 .timeline-card {
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 1rem;
-   box-shadow: 0 4px 18px rgba(15, 23, 42, 0.03);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
+
   display: flex;
   align-items: center;
   position: relative;
@@ -1034,7 +1032,7 @@ padding: 0rem 1.5rem 6rem 1.5rem;
   justify-content: center;
   margin-left: -52px;
   flex-shrink: 0;
-  box-shadow: 0 0 0 6px #FFFFFF;
+  box-shadow: 0 0 0 6px #ffffff;
   position: relative;
   z-index: 2;
 }
@@ -1043,7 +1041,7 @@ padding: 0rem 1.5rem 6rem 1.5rem;
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: #FFFFFF;
+  background: #ffffff;
   border: 1.5px solid rgba(46, 103, 245, 0.25);
   display: flex;
   align-items: center;
@@ -1067,7 +1065,7 @@ padding: 0rem 1.5rem 6rem 1.5rem;
 .timeline-card__title {
   font-size: 1.6rem;
   font-weight: 800;
-  color: #1A1AE0;
+  color: #1a1ae0;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   margin: 0;
@@ -1210,6 +1208,652 @@ padding: 0rem 1.5rem 6rem 1.5rem;
   .solution-cta .cta-btn {
     min-height: 64px;
     font-size: 1rem;
+    padding: 1rem 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   WHO IS THIS FOR / AUDIENCE SECTION
+   ========================================================================== */
+.audience-section {
+  background: var(--bg-page);
+  padding: 0rem 1.5rem 6rem 1.5rem;
+  position: relative;
+}
+
+.audience-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.audience-header {
+  max-width: 860px;
+  margin: 0 auto 3.5rem;
+}
+
+.audience-headline {
+  font-size: clamp(2rem, 3.8vw, 2.75rem);
+  font-weight: 900;
+  line-height: 1.25;
+  color: #0b0f19;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+
+.audience-subtext {
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  color: #4b5563;
+  line-height: 1.65;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* 5 Cards Balanced Flex/Grid */
+.audience-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.audience-card {
+  flex: 0 1 calc(33.333% - 1.5rem);
+  min-width: 290px;
+  max-width: 360px;
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
+
+  border-radius: 1.2rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.audience-card__media {
+  height: 185px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.25rem 0.5rem;
+  position: relative;
+}
+
+.audience-card__img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.audience-card__body {
+  padding: 1.35rem 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.audience-card__title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #1a1ae0;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.audience-card__desc {
+  font-size: 1rem;
+  color: #5a6882;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Reassurance Banner */
+.audience-reassurance {
+  max-width: 1000px;
+  margin: 0 auto 3.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(19, 76, 218, 0.06) 0%,
+    rgba(26, 26, 224, 0.02) 100%
+  );
+  border-radius: 1.2rem;
+
+   display: flex;
+  align-items: center;
+  gap: 2rem;
+  text-align: left;
+}
+
+.audience-reassurance__media {
+  width: 220px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.audience-reassurance__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.audience-reassurance__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.audience-reassurance__title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0b0f19;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.audience-reassurance__desc {
+  font-size: 1rem;
+  color: #4b5563;
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* CTA Button */
+.audience-cta {
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.audience-cta .cta-btn {
+  min-height: 72px;
+  padding: 1.15rem 2.25rem;
+  font-size: 1.15rem;
+  letter-spacing: 0.03em;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 28px rgba(26, 26, 224, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .audience-card {
+    flex: 0 1 calc(50% - 1.5rem);
+    max-width: 100%;
+  }
+
+  .audience-reassurance {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .audience-section {
+    padding: 4rem 1.25rem 4.5rem;
+  }
+
+  .audience-card {
+    flex: 0 1 100%;
+    min-width: 100%;
+  }
+
+  .audience-reassurance {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 1.75rem 1.25rem;
+    gap: 1.25rem;
+  }
+
+  .audience-reassurance__content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .audience-cta .cta-btn {
+    min-height: 64px;
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+  }
+}
+
+
+
+/* ==========================================================================
+   7-DAY CURRICULUM SECTION — Tabbed Layout
+   ========================================================================== */
+.curriculum-section {
+  background: var(--bg-page);
+  border-top: none;
+    padding: 0rem 1.5rem 6rem 1.5rem;
+}
+
+.curriculum-container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* Header */
+.curriculum-header {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+}
+
+.curriculum-headline {
+  font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+  font-weight: 900;
+  line-height: 1.25;
+  color: #0B0F19;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.1rem;
+}
+
+.curriculum-subtext {
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  color: #4B5563;
+  line-height: 1.65;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Tabs Row */
+.curriculum-tabs {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 18px;
+  padding: 0;
+  margin-bottom: 18px;
+  background: transparent;
+}
+
+.curriculum-tab {
+  min-width: 0;
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 12px;
+  border: none;
+  background: var(--bg-surface);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
+
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-family: inherit;
+  text-align: center;
+  color: var(--blue-deep);
+}
+
+.curriculum-tab:hover {
+  background: rgba(46, 103, 245, 0.06);
+}
+
+.curriculum-tab:focus-visible {
+  outline: 2px solid var(--blue-mid);
+  outline-offset: -4px;
+}
+
+.curriculum-tab--active {
+  background: var(--blue-deep);
+  color: #ffffff;
+}
+
+.curriculum-tab--active:hover {
+  background: var(--blue-mid);
+}
+
+.tab-day {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: inherit;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .curriculum-tabs {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .curriculum-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Curriculum panels */
+.curriculum-panel-wrapper {
+  margin-bottom: 2.5rem;
+}
+
+.curriculum-panel {
+  padding: 24px;
+ 
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
+
+  animation: panelFadeIn 0.25s ease;
+}
+
+.curriculum-panel[hidden] {
+  display: none !important;
+}
+
+@keyframes panelFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.curriculum-card-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.curriculum-card-layout__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e5edfb;
+}
+
+.curriculum-card-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  min-width: 0;
+}
+
+.curriculum-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 64px;
+  height: 64px;
+  border-radius: 9px;
+  background: #dff3ff;
+  color: #0668ff;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.curriculum-card-heading__text {
+  min-width: 0;
+  padding-top: 3px;
+}
+
+.curriculum-card-layout__title {
+  margin: 0 0 8px;
+  color: #0b103e;
+  font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+.curriculum-card-layout__lead {
+  margin: 0;
+  color: #53658b;
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.curriculum-tool-logos {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  flex: 0 0 auto;
+  gap: 18px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.curriculum-tool {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 52px;
+  color: #0b103e;
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.curriculum-tool img {
+  display: block;
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+}
+
+.curriculum-card-layout__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ctag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 8px 22px;
+  border-radius: 6px;
+  color: #0b103e;
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.ctag--blue { background: #dff3fc; color: #0668ff; }
+.ctag--yellow { background: #fff8cf; }
+.ctag--red { background: #ffe8e8; }
+.ctag--purple { background: #eee9ff; }
+.ctag--green { background: #e4f9e7; }
+.ctag--orange { background: #fff0df; }
+.ctag--gray { background: #f0f3f8; }
+.ctag--teal { background: #e1f8f4; }
+
+.curriculum-card-layout__takeaway {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 74px;
+  padding: 14px 20px;
+  border-radius: 10px;
+  background: #eaf3ff;
+}
+
+.curriculum-takeaway-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 56px;
+  min-height: 42px;
+  padding-right: 18px;
+  border-right: 1px solid #d0e3ff;
+  color: #0668ff;
+}
+
+.curriculum-takeaway-icon svg {
+  display: block;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+}
+
+.curriculum-takeaway-text strong {
+  display: block;
+  margin-bottom: 2px;
+  color: #0668ff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.curriculum-takeaway-text p {
+  margin: 0;
+  color: #53658b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (max-width: 1000px) {
+  .curriculum-tool-logos {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .curriculum-card-layout__top {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .curriculum-tool-logos {
+    justify-content: flex-start;
+    margin: 0;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .curriculum-panel {
+    padding: 20px 16px;
+  }
+
+  .curriculum-card-heading {
+    gap: 12px;
+  }
+
+  .curriculum-card-icon {
+    flex-basis: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+
+  .curriculum-tool-logos {
+    gap: 8px;
+  }
+
+  .curriculum-tool {
+    width: 44px;
+    font-size: 10px;
+  }
+
+  .curriculum-tool img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .ctag {
+    padding: 8px 14px;
+  }
+
+  .curriculum-card-layout__takeaway {
+    gap: 12px;
+    padding: 14px 12px;
+  }
+
+  .curriculum-takeaway-icon {
+    flex-basis: 44px;
+    padding-right: 10px;
+  }
+
+  .curriculum-takeaway-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Bonus Banner */
+.curriculum-bonus {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  background: linear-gradient(135deg, rgba(46, 103, 245, 0.07) 0%, rgba(26, 26, 224, 0.03) 100%);
+  border: none;
+  border-radius: 0.9rem;
+  padding: 1.15rem 1.75rem;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.curriculum-bonus__icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.curriculum-bonus__icon svg {
+  transform: rotate(-12deg);
+}
+
+.curriculum-bonus__text {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1A1AE0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* CTA */
+.curriculum-cta {
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.curriculum-cta .cta-btn {
+  min-height: 72px;
+  padding: 1.15rem 2.25rem;
+  font-size: 1.15rem;
+  letter-spacing: 0.03em;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 28px rgba(26, 26, 224, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .curriculum-section {
+    padding: 4rem 1rem 4.5rem;
+  }
+
+
+
+  .curriculum-cta .cta-btn {
+    font-size: 1rem;
+    min-height: 64px;
     padding: 1rem 1.5rem;
   }
 }
