@@ -271,21 +271,46 @@ body {
   gap: 1rem;
 }
 
-/* ── Video ── */
+/* ── Video Window Mockup ── */
 .hero__video {
   width: 100%;
 }
+
+.video-window {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: none;
+  padding: 0.6rem;
+}
+
+.video-window__bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0.15rem 0.35rem 0.35rem;
+}
+
+.window-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.window-dot--red    { background: #FF5F56; }
+.window-dot--yellow { background: #FFBD2E; }
+.window-dot--green  { background: #27C93F; }
 
 .video-wrap {
   position: relative;
   width: 100%;
   padding-top: 56.25%;
-  border-radius: 0.85rem;
+  border-radius: 0.8rem;
   overflow: hidden;
-  border: 1px solid var(--border);
-  box-shadow:
-    0 16px 40px rgba(15, 23, 42, 0.12),
-    0 0 24px rgba(46, 103, 245, 0.08);
+  background: #000;
 }
 
 .video-wrap iframe {
@@ -322,7 +347,7 @@ body {
 }
 
 .starts-text {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
