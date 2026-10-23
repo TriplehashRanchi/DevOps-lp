@@ -1,28 +1,30 @@
 /* ── CSS Variables — Cloud Train Brand (Light Theme) ── */
 :root {
-  --blue-deep:    #1A1AE0;
-  --blue-mid:     #2E67F5;
-  --blue-light:   #4F5FD5;
-  --blue-glow:    rgba(46, 103, 245, 0.18);
-  --bg-page:      #F8FAFC;
-  --bg-surface:   #FFFFFF;
-  --bg-card:      #FFFFFF;
-  --text-primary: #0B0F19;
-  --text-muted:   #5A6882;
-  --text-strong:  #1E293B;
-  --border:       rgba(79, 95, 213, 0.15);
+  --blue-deep: #1a1ae0;
+  --blue-mid: #2e67f5;
+  --blue-light: #4f5fd5;
+  --blue-glow: rgba(46, 103, 245, 0.18);
+  --bg-page: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-card: #ffffff;
+  --text-primary: #0b0f19;
+  --text-muted: #5a6882;
+  --text-strong: #1e293b;
+  --border: rgba(79, 95, 213, 0.15);
   --border-hover: rgba(79, 95, 213, 0.35);
 }
 
 /* ── Reset & Base ── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: 'Inter', Arial, sans-serif;
+  font-family: "Inter", Arial, sans-serif;
   line-height: 1.6;
   color: var(--text-primary);
   background: var(--bg-page);
@@ -44,8 +46,12 @@ body {
   z-index: 0;
 }
 
-.deco-vline--left  { left: 80px; }
-.deco-vline--right { right: 80px; }
+.deco-vline--left {
+  left: 80px;
+}
+.deco-vline--right {
+  right: 80px;
+}
 
 .deco-vline__dot {
   position: absolute;
@@ -75,7 +81,9 @@ body {
   z-index: 0;
 }
 
-.deco-hline--top { top: 80px; }
+.deco-hline--top {
+  top: 80px;
+}
 
 /* ── Floating Corner Icons ── */
 .deco-icon {
@@ -137,21 +145,41 @@ body {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(46, 103, 245, 0.12) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 30% at 85% 85%, rgba(107, 127, 215, 0.08) 0%, transparent 60%),
+    radial-gradient(
+      ellipse 70% 50% at 50% -10%,
+      rgba(46, 103, 245, 0.12) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 40% 30% at 85% 85%,
+      rgba(107, 127, 215, 0.08) 0%,
+      transparent 60%
+    ),
     var(--bg-page);
 }
 
 /* dot grid */
 .hero::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(79, 95, 213, 0.12) 1px, transparent 1px);
+  background-image: radial-gradient(
+    circle,
+    rgba(79, 95, 213, 0.12) 1px,
+    transparent 1px
+  );
   background-size: 36px 36px;
   pointer-events: none;
-  mask-image: radial-gradient(ellipse 85% 65% at 50% 10%, black 35%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 10%, black 35%, transparent 100%);
+  mask-image: radial-gradient(
+    ellipse 85% 65% at 50% 10%,
+    black 35%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 85% 65% at 50% 10%,
+    black 35%,
+    transparent 100%
+  );
 }
 
 .hero__container {
@@ -184,7 +212,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.13em;
   text-transform: uppercase;
-  color: #1A1AE0;
+  color: #1a1ae0;
   background: rgba(46, 103, 245, 0.12);
   border-radius: 100px;
   padding: 0.45rem 1.1rem;
@@ -200,7 +228,7 @@ body {
 }
 
 .highlight {
-  background: linear-gradient(90deg, #1A1AE0, #4F5FD5);
+  background: linear-gradient(90deg, #1a1ae0, #4f5fd5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -212,9 +240,13 @@ body {
   display: inline-block;
   font-size: 1rem;
   font-weight: 700;
-  color: #1A1AE0;
-  background: linear-gradient(135deg, rgba(79, 95, 213, 0.12) 0%, rgba(26, 26, 224, 0.18) 100%);
-   padding: 0.65rem 1.15rem;
+  color: #1a1ae0;
+  background: linear-gradient(
+    135deg,
+    rgba(79, 95, 213, 0.12) 0%,
+    rgba(26, 26, 224, 0.18) 100%
+  );
+  padding: 0.65rem 1.15rem;
   border-radius: 0.5rem;
   transform: rotate(-1.5deg);
   box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
@@ -251,7 +283,9 @@ body {
   border-radius: 0.85rem;
   overflow: hidden;
   border: 1px solid var(--border);
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12), 0 0 24px rgba(46, 103, 245, 0.08);
+  box-shadow:
+    0 16px 40px rgba(15, 23, 42, 0.12),
+    0 0 24px rgba(46, 103, 245, 0.08);
 }
 
 .video-wrap iframe {
@@ -292,7 +326,7 @@ body {
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #64748B;
+  color: #64748b;
   white-space: nowrap;
 }
 
@@ -309,12 +343,15 @@ body {
   align-items: center;
   gap: 0.85rem;
   background: var(--bg-card);
-  
+
   border-radius: 0.6rem;
   padding: 0.85rem 1.1rem;
   min-height: 66px;
   box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    border-color 0.2s;
 }
 
 .meta-item:hover {
@@ -324,7 +361,7 @@ body {
 }
 
 .meta-icon {
-  color: #1A1AE0;
+  color: #1a1ae0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -346,7 +383,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #64748B;
+  color: #64748b;
 }
 
 .meta-value {
@@ -370,11 +407,14 @@ body {
   text-align: center;
   text-decoration: none;
   color: #fff;
-  background: linear-gradient(180deg, #2E67F5 0%, #1A1AE0 100%);
+  background: linear-gradient(180deg, #2e67f5 0%, #1a1ae0 100%);
   border-radius: 0.6rem;
   cursor: pointer;
   box-shadow: 0 8px 24px rgba(26, 26, 224, 0.25);
-  transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s,
+    filter 0.15s;
 }
 
 .cta-btn:hover {
@@ -391,7 +431,9 @@ body {
 @media (max-width: 768px) {
   .deco-vline,
   .deco-hline,
-  .deco-icon { display: none; }
+  .deco-icon {
+    display: none;
+  }
 
   .hero__grid {
     grid-template-columns: 1fr;
@@ -412,5 +454,203 @@ body {
 
   .event-card__meta {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── SECTION: EMPLOYERS & INSTRUCTORS CREDIBILITY ── */
+.credibility-section {
+  padding: 2rem 1.5rem 6rem;
+  background: var(--bg-page);
+  border-top: none;
+  position: relative;
+}
+
+.credibility-section__container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── 1. Employers Carousel ── */
+.credibility-section__companies {
+  width: 100%;
+  margin-bottom: 5rem;
+  text-align: center;
+}
+
+.companies-heading {
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
+.logos-carousel {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+}
+
+.logos-track {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: max-content;
+  animation: marquee-logos 28s linear infinite;
+}
+
+.company-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1.4rem;
+  background: #ffffff;
+  border-radius: 0.7rem;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+  color: #334155;
+  font-size: 1.05rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.company-badge svg {
+  flex-shrink: 0;
+  color: #475569;
+}
+
+@keyframes marquee-logos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ── 2. Instructors Credibility ── */
+.credibility-section__instructors {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.instructors-headline {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+
+ 
+.instructors-description {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  line-height: 1.85;
+  max-width: 780px;
+  margin-bottom: 3rem;
+}
+
+/* ── Stats Grid ── */
+.instructors-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 2rem 1.5rem;
+  background: #ffffff;
+   border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    border-color 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-hover);
+  box-shadow: 0 12px 30px rgba(46, 103, 245, 0.12);
+}
+
+.stat-number {
+  font-size: clamp(2rem, 3.6vw, 2.75rem);
+  font-weight: 900;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #1a1ae0 0%, #2e67f5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+
+
+.instructors-cta {
+  width: 100%;
+  max-width: 580px;
+  margin-top: 3.5rem;
+}
+
+.instructors-cta .cta-btn {
+  min-height: 74px;
+  padding: 1.15rem 2.25rem;
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 28px rgba(26, 26, 224, 0.3);
+}
+
+/* ── Responsive for Credibility Section ── */
+@media (max-width: 768px) {
+  .credibility-section {
+    padding: 3.5rem 1.25rem 4rem;
+  }
+
+  .credibility-section__companies {
+    margin-bottom: 3.5rem;
+  }
+
+  .instructors-stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
