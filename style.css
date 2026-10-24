@@ -468,12 +468,6 @@ body {
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .deco-vline,
-  .deco-hline,
-  .deco-icon {
-    display: none;
-  }
-
   .hero__grid {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -493,6 +487,223 @@ body {
 
   .event-card__meta {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Hero-only tablet and phone adjustments; desktop rules stay unchanged. */
+@media (max-width: 1023px) {
+  .hero {
+    min-height: auto;
+    padding: 7rem 1.5rem 6rem;
+  }
+
+  .hero .deco-vline--left {
+    left: 12px;
+  }
+
+  .hero .deco-vline--right {
+    right: 12px;
+  }
+
+  .hero .deco-hline--top {
+    top: 80px;
+  }
+
+  .hero .deco-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .hero .deco-icon--tl,
+  .hero .deco-icon--bl {
+    left: 32px;
+  }
+
+  .hero .deco-icon--tr,
+  .hero .deco-icon--br {
+    right: 32px;
+  }
+
+  .hero .deco-icon--tl,
+  .hero .deco-icon--tr {
+    top: 16px;
+  }
+
+  .hero .deco-icon--bl,
+  .hero .deco-icon--br {
+    bottom: 16px;
+  }
+
+  .hero__container {
+    max-width: 720px;
+  }
+
+  .hero__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  .hero__left,
+  .hero__right {
+    min-width: 0;
+  }
+
+  .hero__right {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .hero__headline {
+    font-size: clamp(2rem, 4.3vw, 2.6rem);
+    line-height: 1.25;
+  }
+
+  .hero__eyebrow {
+    max-width: 100%;
+    font-size: 0.7rem;
+    line-height: 1.6;
+    letter-spacing: 0.08em;
+  }
+
+  .hero__subheadline {
+    max-width: 100%;
+    line-height: 1.65;
+  }
+
+  .hero .event-card__meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .hero .meta-item {
+    min-width: 0;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .hero .meta-content {
+    min-width: 0;
+  }
+
+  .hero .meta-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .hero .cta-btn {
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    text-wrap: balance;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 6rem 1.25rem 5.5rem;
+  }
+
+  .hero .deco-vline--left {
+    left: 8px;
+  }
+
+  .hero .deco-vline--right {
+    right: 8px;
+  }
+
+  .hero .deco-hline--top {
+    top: 72px;
+  }
+
+  .hero .deco-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero .deco-icon--tl,
+  .hero .deco-icon--bl {
+    left: 24px;
+  }
+
+  .hero .deco-icon--tr,
+  .hero .deco-icon--br {
+    right: 24px;
+  }
+
+  .hero__left {
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .hero__eyebrow,
+  .hero__subheadline {
+    align-self: center;
+  }
+
+  .hero__headline {
+  font-size: clamp(1.5rem, 5vw, 1.8rem);
+  }
+
+  .hero__eyebrow {
+    padding: 0.55rem 0.8rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+  }
+
+  .hero__subheadline {
+    padding: 0.8rem 0.9rem;
+    font-size: 0.95rem;
+  }
+
+  .hero__description {
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  .hero .video-window {
+    padding: 0.45rem;
+    border-radius: 0.85rem;
+  }
+
+  .hero .event-card__meta {
+    gap: 0.65rem;
+  }
+
+  .hero .meta-item {
+    gap: 0.65rem;
+    padding: 0.8rem 0.75rem;
+    justify-content: center;
+    text-align: left;
+  }
+
+  .hero .meta-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .hero .cta-btn {
+    min-height: 64px;
+    padding: 0.9rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero .meta-item {
+    flex-direction: row;
+    align-items: center;
+    min-height: 66px;
+    padding: 0.8rem 0.6rem;
+    gap: 0.45rem;
+  }
+
+  .hero .meta-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .hero .meta-value {
+    font-size: clamp(0.75rem, 3.2vw, 0.9rem);
   }
 }
 
@@ -578,8 +789,10 @@ body {
   flex-shrink: 0;
 }
 
-.logos-carousel:hover .logos-track {
-  animation-play-state: paused;
+@media (min-width: 641px) and (hover: hover) and (pointer: fine) {
+  .logos-carousel:hover .logos-track {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes marquee-logos {
@@ -633,7 +846,7 @@ body {
 
 .instructors-headline {
   font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1.25;
   color: var(--text-primary);
   letter-spacing: -0.02em;
@@ -841,6 +1054,191 @@ body {
 }
 
 /* ── SECTION: THE OLD WAY VS THE CLOUD TRAIN WAY ── */
+/* Credibility adjustments apply only below the desktop breakpoint. */
+@media (max-width: 1023px) {
+  .credibility-section {
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .credibility-section__companies {
+    margin-bottom: 3.5rem;
+  }
+
+  .credibility-section .companies-heading {
+    max-width: 36rem;
+    margin: 0 auto 1.5rem;
+    line-height: 1.65;
+  }
+
+  .credibility-section .logos-track {
+    gap: 1rem;
+    padding-right: 1rem;
+  }
+
+  .credibility-section .company-badge {
+    flex-basis: 160px;
+    min-height: 76px;
+    padding: 16px;
+  }
+
+  .credibility-section .company-logo {
+    width: 128px;
+    height: 44px;
+  }
+
+  .credibility-section .instructors-layout {
+    gap: 2rem;
+  }
+
+  .credibility-section .instructors-stats {
+    gap: 1.125rem;
+    padding: 2rem 0.75rem 1rem;
+  }
+
+  .credibility-section .stat-card {
+    min-height: 210px;
+    padding: 2.75rem 0.75rem 1.75rem;
+  }
+
+  .credibility-section .stat-number {
+    font-size: clamp(3rem, 6vw, 4rem);
+  }
+
+  .credibility-section .stat-label {
+    font-size: 0.9rem;
+  }
+
+  .credibility-section .instructors-cta {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .credibility-section {
+    padding: 2.75rem 1.25rem 3.5rem;
+  }
+
+  .credibility-section__companies {
+    margin-bottom: 2.75rem;
+  }
+
+  .credibility-section .companies-heading {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+  }
+
+  .credibility-section .company-badge {
+    flex-basis: 120px;
+    min-height: 60px;
+    padding: 12px;
+  }
+
+  .credibility-section .company-logo {
+    width: 96px;
+    height: 34px;
+  }
+
+  .credibility-section .logos-track {
+    gap: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .credibility-section .instructors-headline {
+    font-size: clamp(1.65rem, 5.5vw, 2rem);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .credibility-section .instructors-description {
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+
+  .credibility-section .instructors-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    max-width: 460px;
+    padding: 0;
+    gap: 1rem;
+  }
+
+  .credibility-section .stat-card {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+    padding: 1rem 0.75rem;
+    gap: 0.5rem;
+    border-radius: 1.25rem;
+    text-align: center;
+  }
+
+  .credibility-section .stat-card:last-child {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 36px max-content minmax(0, 1fr);
+    align-content: center;
+    justify-items: start;
+    min-height: 104px;
+    padding: 1rem;
+    gap: 0.75rem;
+    text-align: left;
+  }
+
+  .credibility-section .stat-card:last-child .stat-icon {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .credibility-section .stat-card:last-child .stat-value {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .credibility-section .stat-card:last-child .stat-label {
+    grid-column: 3;
+    grid-row: 1;
+    min-height: 0;
+    justify-self: center;
+  }
+
+  .credibility-section .stat-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .credibility-section .stat-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .credibility-section .stat-value {
+    gap: 0.3rem;
+  }
+
+  .credibility-section .stat-number {
+    font-size: 2.25rem;
+  }
+
+  .credibility-section .stat-unit {
+    font-size: 0.75rem;
+  }
+
+  .credibility-section .stat-label {
+    min-height: 2.8em;
+    font-size: 0.85rem;
+  }
+
+  .credibility-section__instructors .instructors-cta .cta-btn {
+    min-height: 64px;
+    padding: 1rem 0.9rem;
+    font-size: clamp(0.9rem, 2.7vw, 1rem);
+    line-height: 1.5;
+    text-wrap: balance;
+  }
+}
+
 .comparison-section {
   padding: 0rem 1.5rem 6rem 1.5rem;
 
@@ -1117,6 +1515,152 @@ body {
   }
 }
 
+/* Comparison sizing stays scoped to tablet and phone screens. */
+@media (max-width: 1023px) {
+  .comparison-section {
+    padding: 1rem 1.5rem 4rem;
+  }
+
+  .comparison-section .comparison-header {
+    margin-bottom: 2.75rem;
+  }
+
+  .comparison-section .comparison-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .comparison-section .comparison-col {
+    min-width: 0;
+    padding: 2.75rem 1.25rem 1.75rem;
+  }
+
+  .comparison-section .comparison-col__header {
+    max-width: calc(100% - 2rem);
+  }
+
+  .comparison-section .comparison-badge {
+    max-width: 100%;
+  }
+
+  .comparison-section .comparison-item {
+    gap: 0.9rem;
+    padding: 1rem 0;
+  }
+
+  .comparison-section .comparison-item:first-child {
+    padding-top: 0.25rem;
+  }
+
+  .comparison-section .comparison-item:last-child {
+    padding-bottom: 0.25rem;
+  }
+
+  .comparison-section .item-icon-badge {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+  }
+
+  .comparison-section .item-content {
+    min-width: 0;
+  }
+
+  .comparison-section .item-heading,
+  .comparison-section .item-text-bold {
+    font-size: 0.96rem;
+    line-height: 1.5;
+  }
+
+  .comparison-section .item-subheading {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .comparison-section .instructors-cta {
+    margin-top: 2.5rem;
+  }
+
+  .comparison-section .instructors-cta .cta-btn {
+    min-height: 64px;
+    padding: 1rem 1.25rem;
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    text-wrap: balance;
+  }
+}
+
+@media (max-width: 768px) {
+  .comparison-section {
+    padding: 1rem 1.25rem 3.5rem;
+  }
+
+  .comparison-section .comparison-headline {
+    font-size: clamp(1.65rem, 4.5vw, 2rem);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .comparison-section .comparison-subtext {
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+
+  .comparison-section .comparison-grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 600px;
+    margin: 0 auto;
+    gap: 2rem;
+  }
+
+  .comparison-section .comparison-badge--old {
+    padding: 0.65rem 0.9rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+  }
+
+  .comparison-section .comparison-badge--new {
+    padding: 0.2rem 0.9rem;
+  }
+
+  .comparison-section .badge-logo-img {
+    max-width: 160px;
+    height: 40px;
+  }
+
+  .comparison-section .item-icon-badge {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .comparison-section .comparison-col {
+    padding: 2.5rem 1rem 1.5rem;
+  }
+
+  .comparison-section .comparison-item {
+    gap: 0.75rem;
+  }
+
+  .comparison-section .item-icon-badge {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+
+  .comparison-section .item-icon-badge svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .comparison-section .instructors-cta .cta-btn {
+    padding: 1rem 0.9rem;
+  }
+}
+
 /* ==========================================================================
    WORKSHOP PURPOSE / SOLUTION SECTION
    ========================================================================== */
@@ -1140,7 +1684,7 @@ body {
 
 .solution-headline {
   font-size: clamp(2rem, 3.8vw, 2.75rem);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1.25;
   color: #0b0f19;
   letter-spacing: -0.02em;
@@ -1247,7 +1791,7 @@ body {
   line-height: 1.65;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1023px) {
   .solution-journey {
     max-width: 600px;
     padding: 0;
@@ -1404,6 +1948,112 @@ body {
   }
 }
 
+/* Solution adjustments leave the desktop journey unchanged. */
+@media (max-width: 1023px) {
+  .solution-section {
+    padding: 1rem 1.5rem 4rem;
+  }
+
+  .solution-section .solution-header {
+    margin-bottom: 2.75rem;
+  }
+
+  .solution-section .journey-step__content {
+    min-width: 0;
+  }
+
+  .solution-section .solution-bottom {
+    gap: 1.5rem;
+  }
+
+  .solution-section .solution-cta .cta-btn {
+    min-height: 64px;
+    padding: 1rem 1.25rem;
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+  }
+}
+
+@media (max-width: 640px) {
+  .solution-section {
+    padding: 1rem 1.25rem 3.5rem;
+  }
+
+  .solution-section .solution-header {
+    margin-bottom: 2rem;
+  }
+
+  .solution-section .solution-headline {
+    font-size: clamp(1.65rem, 5.5vw, 2rem);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .solution-section .solution-subtext {
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+
+  .solution-section .solution-journey {
+    margin-bottom: 2.5rem;
+  }
+
+  .solution-section .journey-step {
+    gap: 1.25rem;
+  }
+
+  .solution-section .journey-step__title {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .solution-section .journey-step__description {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .solution-section .solution-quote {
+    font-size: 1.05rem;
+    line-height: 1.55;
+  }
+
+  .solution-section .solution-cta .cta-btn {
+    font-size: clamp(0.9rem, 2.7vw, 1rem);
+    padding: 1rem 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .solution-section .journey-step {
+    grid-template-columns: 80px minmax(0, 1fr);
+    gap: 0.9rem;
+  }
+
+  .solution-section .journey-step__visual {
+    width: 80px;
+    height: 88px;
+  }
+
+  .solution-section .journey-step__number {
+    width: 30px;
+    height: 30px;
+    border-width: 3px;
+    font-size: 10px;
+  }
+
+  .solution-section .journey-list::before {
+    top: 44px;
+    bottom: 44px;
+    left: 39px;
+  }
+
+  .solution-section .journey-step__title {
+    font-size: 0.92rem;
+  }
+}
+
 /* ==========================================================================
    WHO IS THIS FOR / AUDIENCE SECTION
    ========================================================================== */
@@ -1426,7 +2076,7 @@ body {
 
 .audience-headline {
   font-size: clamp(2rem, 3.8vw, 2.75rem);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1.25;
   color: #0b0f19;
   letter-spacing: -0.02em;
@@ -1728,6 +2378,184 @@ body {
   }
 }
 
+/* Audience refinements apply only below the desktop breakpoint. */
+@media (max-width: 1023px) {
+  .audience-section {
+    padding: 1rem 1.5rem 4rem;
+  }
+
+  .audience-section .audience-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .audience-section .audience-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .audience-section .audience-grid > .audience-card {
+    grid-column: auto;
+  }
+
+  .audience-section .audience-grid .audience-card__media {
+    height: 170px;
+    padding: 0.25rem 0.75rem 0;
+  }
+
+  .audience-section .audience-grid .audience-card__body {
+    min-width: 0;
+    padding: 1.25rem;
+  }
+
+  .audience-section .audience-grid .audience-card__title {
+    font-size: 1.15rem;
+  }
+
+  .audience-section .audience-card--welcome {
+    grid-template-columns: minmax(0, 1fr) 220px;
+    margin: 3rem 0 2.5rem;
+  }
+
+  .audience-section .audience-card--welcome .audience-card__img {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .audience-section .audience-card--welcome .audience-card__body {
+    min-width: 0;
+    padding: 1.5rem;
+  }
+
+  .audience-section .audience-cta .cta-btn {
+    min-height: 64px;
+    padding: 1rem 1.25rem;
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  .audience-section .audience-grid > .audience-card:last-child {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(140px, 32%) minmax(0, 1fr);
+    align-items: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .audience-section {
+    padding: 1rem 1.25rem 3.5rem;
+  }
+
+  .audience-section .audience-header {
+    margin-bottom: 2rem;
+  }
+
+  .audience-section .audience-headline {
+    font-size: clamp(1.65rem, 5.5vw, 2rem);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .audience-section .audience-subtext {
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  .audience-section .audience-grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 560px;
+    margin: 0 auto 2rem;
+    gap: 1rem;
+  }
+
+  .audience-section .audience-grid > .audience-card {
+    grid-template-columns: minmax(88px, 30%) minmax(0, 1fr);
+  }
+
+  .audience-section .audience-grid .audience-card__media {
+    height: auto;
+    min-height: 140px;
+    margin: 0.5rem 0 0.5rem 0.5rem;
+    padding: 0.5rem 0.15rem 0.25rem;
+  }
+
+  .audience-section .audience-grid .audience-card__media::before {
+    inset: 0.5rem 0 0.25rem;
+  }
+
+  .audience-section .audience-grid .audience-card__img {
+    max-height: 140px;
+  }
+
+  .audience-section .audience-grid .audience-card__body {
+    padding: 1rem 0.9rem;
+    gap: 0.5rem;
+  }
+
+  .audience-section .audience-grid .audience-card__title {
+    font-size: 1.05rem;
+  }
+
+  .audience-section .audience-grid .audience-card__desc {
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
+
+  .audience-section .audience-card--welcome {
+    margin: 3rem 0 2rem;
+  }
+
+  .audience-section .audience-card--welcome .audience-card__media {
+    height: 148px;
+    min-height: 148px;
+    margin: -1.25rem 0 0;
+    padding: 0;
+  }
+
+  .audience-section .audience-card--welcome .audience-card__img {
+    width: min(260px, 100%);
+    height: 180px;
+    object-position: center bottom;
+  }
+
+  .audience-section .audience-card--welcome .audience-card__body {
+    padding: 0.75rem 1.25rem 1.5rem;
+  }
+
+  .audience-section .audience-card--welcome .audience-card__title {
+    font-size: 1.15rem;
+  }
+
+  .audience-section .audience-card--welcome .audience-card__desc {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .audience-section .audience-cta .cta-btn {
+    font-size: clamp(0.9rem, 2.7vw, 1rem);
+    padding: 1rem 0.9rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .audience-section .audience-grid > .audience-card {
+    grid-template-columns: 80px minmax(0, 1fr);
+  }
+
+  .audience-section .audience-grid .audience-card__body {
+    padding: 1rem 0.8rem;
+  }
+
+  .audience-section .audience-grid .audience-card__title {
+    font-size: 1rem;
+  }
+}
+
 
 
 /* ==========================================================================
@@ -1753,7 +2581,7 @@ body {
 
 .curriculum-headline {
   font-size: clamp(1.9rem, 3.5vw, 2.6rem);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1.25;
   color: #0B0F19;
   letter-spacing: -0.02em;
@@ -2158,6 +2986,218 @@ body {
   }
 }
 
+/* Curriculum adjustments leave the desktop tabs and panels unchanged. */
+@media (max-width: 1023px) {
+  .curriculum-section {
+    padding: 1rem 1.5rem 4rem;
+  }
+
+  .curriculum-section .curriculum-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .curriculum-section .curriculum-tabs {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+
+  .curriculum-section .curriculum-tab {
+    min-height: 60px;
+    padding: 1rem 0.5rem;
+  }
+
+  .curriculum-section .tab-day {
+    font-size: 18px;
+  }
+
+  .curriculum-section .curriculum-card-layout__top {
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .curriculum-section .curriculum-tool-logos {
+    max-width: 100%;
+    gap: 12px;
+  }
+
+  .curriculum-section .curriculum-tool {
+    width: 64px;
+  }
+
+  .curriculum-section .curriculum-takeaway-text {
+    min-width: 0;
+  }
+
+  .curriculum-section .curriculum-bonus {
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .curriculum-section .curriculum-bonus__text {
+    min-width: 0;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .curriculum-section .curriculum-cta .cta-btn {
+    min-height: 64px;
+    padding: 1rem 1.25rem;
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+  }
+}
+
+@media (max-width: 640px) {
+  .curriculum-section {
+    padding: 1rem 1.25rem 3.5rem;
+  }
+
+  .curriculum-section .curriculum-header {
+    margin-bottom: 2rem;
+  }
+
+  .curriculum-section .curriculum-headline {
+    font-size: clamp(1.65rem, 5.5vw, 2rem);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .curriculum-section .curriculum-subtext {
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  .curriculum-section .curriculum-tabs {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .curriculum-section .curriculum-tab {
+    grid-column: span 2;
+    min-height: 52px;
+    padding: 0.75rem 0.4rem;
+  }
+
+  .curriculum-section .curriculum-tab:nth-child(5) {
+    grid-column: 2 / span 2;
+  }
+
+  .curriculum-section .tab-day {
+    font-size: clamp(0.75rem, 3.6vw, 0.95rem);
+  }
+
+  .curriculum-section .curriculum-panel {
+    padding: 1.25rem 1rem;
+  }
+
+  .curriculum-section .curriculum-card-layout {
+    gap: 1rem;
+  }
+
+  .curriculum-section .curriculum-card-layout__top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .curriculum-section .curriculum-card-heading {
+    gap: 0.75rem;
+  }
+
+  .curriculum-section .curriculum-card-icon {
+    flex-basis: 44px;
+    height: 44px;
+    font-size: 22px;
+  }
+
+  .curriculum-section .curriculum-card-layout__title {
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+
+  .curriculum-section .curriculum-card-layout__lead {
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
+
+  .curriculum-section .curriculum-tool-logos {
+    justify-content: flex-start;
+    margin: 0;
+  }
+
+  .curriculum-section .curriculum-tool {
+    width: 64px;
+    font-size: 10.5px;
+  }
+
+  .curriculum-section .curriculum-tool img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .curriculum-section .curriculum-card-layout__tags {
+    gap: 8px;
+  }
+
+  .curriculum-section .ctag {
+    max-width: 100%;
+    padding: 0.5rem 0.65rem;
+    font-size: 0.72rem;
+    text-align: center;
+  }
+
+  .curriculum-section .curriculum-card-layout__takeaway {
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.9rem 0.75rem;
+  }
+
+  .curriculum-section .curriculum-takeaway-icon {
+    flex-basis: 36px;
+    min-height: 36px;
+    padding-right: 8px;
+  }
+
+  .curriculum-section .curriculum-takeaway-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .curriculum-section .curriculum-takeaway-text strong {
+    font-size: 14px;
+  }
+
+  .curriculum-section .curriculum-takeaway-text p {
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  .curriculum-section .curriculum-bonus {
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding: 1rem;
+    text-align: left;
+  }
+
+  .curriculum-section .curriculum-bonus__icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .curriculum-section .curriculum-bonus__text {
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+  }
+
+  .curriculum-section .curriculum-cta .cta-btn {
+    font-size: clamp(0.9rem, 2.7vw, 1rem);
+    padding: 1rem 0.9rem;
+  }
+}
+
 /* Shared countdown to the scheduled workshop start */
 .workshop-countdown {
   width: 100%;
@@ -2284,7 +3324,7 @@ body {
   margin-bottom: 1.25rem;
   color: var(--text-primary);
   font-size: clamp(1.9rem, 3.5vw, 2.6rem);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1.25;
   letter-spacing: -0.02em;
 }
@@ -2448,6 +3488,111 @@ body {
   }
 }
 
+
+/* Inclusions refinements stay below the desktop breakpoint. */
+@media (max-width: 1023px) {
+  .inclusions-section {
+    padding: 1rem 1.5rem 4rem;
+  }
+
+  .inclusions-section .inclusions-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .inclusions-section .inclusions-grid {
+    gap: 40px 24px;
+  }
+
+  .inclusions-section .inclusions-card__summary {
+    min-height: 88px;
+    padding: 12px 20px;
+    gap: 14px;
+  }
+
+  .inclusions-section .inclusions-card__title {
+    font-size: 0.98rem;
+    line-height: 1.5;
+  }
+
+  .inclusions-section .inclusions-footer {
+    margin-top: 2.5rem;
+  }
+
+  .inclusions-section .inclusions-cta {
+    min-height: 64px;
+    padding: 1rem 1.25rem;
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+  }
+}
+
+@media (max-width: 640px) {
+  .inclusions-section {
+    padding: 1rem 1.25rem 3.5rem;
+  }
+
+  .inclusions-section .inclusions-header {
+    margin-bottom: 2rem;
+  }
+
+  .inclusions-section .inclusions-headline {
+    font-size: clamp(1.6rem, 5.5vw, 2rem);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .inclusions-section .inclusions-subtext {
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+
+  .inclusions-section .inclusions-grid {
+    max-width: 560px;
+    margin: 0 auto;
+    gap: 14px;
+  }
+
+  .inclusions-section .inclusions-card {
+    flex-basis: 100%;
+    transform: none;
+  }
+
+  .inclusions-section .inclusions-card__summary {
+    min-height: 72px;
+    padding: 10px 18px;
+    gap: 12px;
+  }
+
+  .inclusions-section .inclusions-card__title {
+    font-size: 0.95rem;
+  }
+
+  .inclusions-section .inclusions-card__arrow {
+    flex-basis: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  .inclusions-section .inclusions-card__arrow::before {
+    inset: -4px;
+  }
+
+  .inclusions-section .inclusions-footer {
+    margin-top: 2rem;
+  }
+
+  .inclusions-section .inclusions-tagline {
+    font-size: clamp(1.15rem, 4.5vw, 1.4rem);
+    line-height: 1.4;
+  }
+
+  .inclusions-section .inclusions-cta {
+    font-size: clamp(0.9rem, 2.7vw, 1rem);
+    padding: 1rem 0.9rem;
+  }
+}
 
 /* Workshop certification */
 .certification-section {
