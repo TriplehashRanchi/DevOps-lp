@@ -678,8 +678,13 @@ body {
   }
 
   .hero .meta-icon {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero .meta-icon svg {
+    width: 22px;
+    height: 22px;
   }
 
   .hero .cta-btn {
@@ -698,8 +703,8 @@ body {
   }
 
   .hero .meta-icon {
-    width: 28px;
-    height: 28px;
+    width: clamp(34px, 10vw, 40px);
+    height: clamp(34px, 10vw, 40px);
   }
 
   .hero .meta-value {
@@ -1177,40 +1182,42 @@ body {
   .credibility-section .stat-card:last-child {
     grid-column: 1 / -1;
     display: grid;
-    grid-template-columns: 36px max-content minmax(0, 1fr);
+    grid-template-columns: 48px minmax(0, max-content);
     align-content: center;
+    justify-content: center;
     justify-items: start;
     min-height: 104px;
     padding: 1rem;
-    gap: 0.75rem;
+    gap: 0.35rem 0.75rem;
     text-align: left;
   }
 
   .credibility-section .stat-card:last-child .stat-icon {
     grid-column: 1;
-    grid-row: 1;
+    grid-row: 1 / 3;
   }
 
   .credibility-section .stat-card:last-child .stat-value {
     grid-column: 2;
     grid-row: 1;
+    justify-content: flex-start;
   }
 
   .credibility-section .stat-card:last-child .stat-label {
-    grid-column: 3;
-    grid-row: 1;
+    grid-column: 2;
+    grid-row: 2;
     min-height: 0;
-    justify-self: center;
+    justify-self: start;
   }
 
   .credibility-section .stat-icon {
-    width: 36px;
-    height: 36px;
+    width: 48px;
+    height: 48px;
   }
 
   .credibility-section .stat-icon svg {
-    width: 20px;
-    height: 20px;
+    width: 28px;
+    height: 28px;
   }
 
   .credibility-section .stat-value {
@@ -3615,7 +3622,7 @@ body {
   margin-bottom: 1.25rem;
   color: var(--text-primary);
   font-size: clamp(1.9rem, 3.5vw, 2.6rem);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1.25;
   letter-spacing: -0.02em;
 }
@@ -3827,7 +3834,7 @@ body {
   box-shadow: 0 10px 28px rgba(26, 26, 224, 0.3);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1023px) {
   .certification-showcase {
     max-width: 720px;
     grid-template-columns: minmax(0, 1fr);
@@ -3922,6 +3929,142 @@ body {
   }
 }
 
+/* Certification sizing is scoped to tablet and phone screens. */
+@media (max-width: 1023px) {
+  .certification-section {
+    padding: 1rem 1.5rem 4rem;
+  }
+
+  .certification-section .certification-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .certification-section .certification-showcase {
+    padding: 24px;
+  }
+
+  .certification-section .certification-steps li > span:last-child {
+    min-width: 0;
+  }
+
+  .certification-section .certification-cta {
+    min-height: 64px;
+    padding: 1rem 1.25rem;
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+  }
+}
+
+@media (max-width: 640px) {
+  .certification-section {
+    padding: 1rem 1.25rem 3.5rem;
+  }
+
+  .certification-section .certification-header {
+    margin-bottom: 2rem;
+  }
+
+  .certification-section .certification-headline {
+    font-size: clamp(1.6rem, 5.5vw, 2rem);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .certification-section .certification-description {
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+
+  .certification-section .certification-showcase {
+    gap: 1.5rem;
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .certification-section .certification-preview-area {
+    padding: 16px 12px;
+    border-radius: 12px;
+  }
+
+  .certification-section .certification-figure figcaption {
+    gap: 0.25rem 0.75rem;
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  .certification-section .certification-figure figcaption a {
+    min-height: 44px;
+  }
+
+  .certification-section .certification-summary {
+    grid-template-columns: 44px minmax(0, 1fr);
+    column-gap: 12px;
+  }
+
+  .certification-section .certification-award {
+    grid-row: 1;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+  }
+
+  .certification-section .certification-award svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .certification-section .certification-title {
+    font-size: clamp(1.15rem, 4.5vw, 1.35rem);
+    margin-bottom: 0;
+    align-self: center;
+  }
+
+  .certification-section .certification-summary__description {
+    grid-column: 1 / -1;
+    margin-top: 0.9rem;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .certification-section .certification-steps {
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .certification-section .certification-steps::before {
+    top: 16px;
+    bottom: 16px;
+    left: 15px;
+  }
+
+  .certification-section .certification-steps li {
+    gap: 10px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .certification-section .certification-step-number {
+    flex-basis: 32px;
+    height: 32px;
+  }
+
+  .certification-section .certification-completion-note {
+    margin-top: 20px;
+    font-size: 0.73rem;
+  }
+
+  .certification-section .certification-cta-wrap {
+    margin-top: 2rem;
+  }
+
+  .certification-section .certification-cta {
+    font-size: clamp(0.9rem, 2.7vw, 1rem);
+    padding: 1rem 0.9rem;
+  }
+}
+
 /* Special workshop bonuses */
 .workshop-bonuses {
   padding: 0 1.5rem 6rem;
@@ -3962,7 +4105,7 @@ body {
 .bonuses-headline {
   color: var(--text-primary);
   font-size: clamp(1.9rem, 3.5vw, 2.6rem);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1.25;
   letter-spacing: -0.02em;
 }
@@ -4178,6 +4321,182 @@ body {
     min-height: 64px;
     padding: 1rem 1.5rem;
     font-size: 1rem;
+  }
+}
+
+/* Bonus card adjustments leave desktop styling and layout unchanged. */
+@media (max-width: 1023px) {
+  .workshop-bonuses {
+    padding: 1rem 1.5rem 4rem;
+  }
+
+  .workshop-bonuses .bonuses-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .workshop-bonuses .bonuses-grid {
+    gap: 24px;
+  }
+
+  .workshop-bonuses .bonus-card {
+    padding: 24px;
+  }
+
+  .workshop-bonuses .bonus-card__gift {
+    flex-shrink: 0;
+  }
+
+  .workshop-bonuses .bonus-card__gift::before {
+    height: 24px;
+  }
+
+  .workshop-bonuses .bonus-card__media {
+    min-height: 220px;
+    margin: 18px 0 20px;
+    padding: 0;
+  }
+
+  .workshop-bonuses .bonus-card__media img {
+    max-width: 360px;
+  }
+
+  .workshop-bonuses .bonus-card__body {
+    min-width: 0;
+  }
+
+  .workshop-bonuses .bonus-card__title {
+    font-size: 1.15rem;
+  }
+
+  .workshop-bonuses .bonus-card__description {
+    font-size: 0.95rem;
+  }
+
+  .workshop-bonuses .bonus-card__value {
+    margin-top: 22px;
+    padding-top: 18px;
+  }
+
+  .workshop-bonuses .bonuses-footer {
+    margin-top: 2.5rem;
+  }
+
+  .workshop-bonuses .bonuses-cta {
+    min-height: 64px;
+    padding: 1rem 1.25rem;
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+  }
+}
+
+@media (max-width: 640px) {
+  .workshop-bonuses {
+    padding: 1rem 1.25rem 3.5rem;
+  }
+
+  .workshop-bonuses .bonuses-header {
+    margin-bottom: 2rem;
+  }
+
+  .workshop-bonuses .bonuses-eyebrow {
+    max-width: 100%;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .workshop-bonuses .bonuses-headline {
+    font-size: clamp(1.65rem, 5.5vw, 2rem);
+    line-height: 1.3;
+  }
+
+  .workshop-bonuses .bonuses-grid {
+    max-width: 560px;
+    gap: 20px;
+  }
+
+  .workshop-bonuses .bonus-card {
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .workshop-bonuses .bonus-card__badge {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+  }
+
+  .workshop-bonuses .bonus-card__gift {
+    width: 34px;
+    height: 34px;
+  }
+
+  .workshop-bonuses .bonus-card__gift::before {
+    height: 20px;
+    left: 9px;
+    width: 16px;
+  }
+
+  .workshop-bonuses .bonus-card__media {
+    min-height: 180px;
+    margin: 16px 0 20px;
+  }
+
+  .workshop-bonuses .bonus-card__media img {
+    max-width: 320px;
+  }
+
+  .workshop-bonuses .bonus-card__title {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+  }
+
+  .workshop-bonuses .bonus-card__description {
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+
+  .workshop-bonuses .bonus-card__value {
+    gap: 8px 12px;
+    margin-top: 20px;
+    padding-top: 16px;
+  }
+
+  .workshop-bonuses .bonus-card__value span {
+    font-size: 0.8rem;
+  }
+
+  .workshop-bonuses .bonus-card__value strong {
+    font-size: 1.45rem;
+  }
+
+  .workshop-bonuses .bonuses-footer {
+    margin-top: 2rem;
+  }
+
+  .workshop-bonuses .bonuses-included {
+    font-size: clamp(1.15rem, 4.5vw, 1.4rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .workshop-bonuses .bonuses-cta {
+    font-size: clamp(0.9rem, 2.7vw, 1rem);
+    padding: 1rem 0.9rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .workshop-bonuses .bonus-card {
+    padding: 18px;
+  }
+
+  .workshop-bonuses .bonus-card__gift::before {
+    height: 18px;
+  }
+
+  .workshop-bonuses .bonus-card__media {
+    min-height: 160px;
   }
 }
 
@@ -4518,7 +4837,7 @@ body {
 .faq-headline {
   color: var(--text-primary);
   font-size: clamp(1.9rem, 3.5vw, 2.6rem);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1.25;
   letter-spacing: -0.02em;
 }
@@ -4695,6 +5014,124 @@ body {
   }
 }
 
+/* FAQ adjustments leave desktop appearance and behavior unchanged. */
+@media (max-width: 1023px) {
+  .faq-section {
+    padding: 1rem 1.5rem 4rem;
+  }
+
+  .faq-section .faq-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .faq-section .faq-question {
+    min-height: 80px;
+    padding: 20px;
+    gap: 14px;
+  }
+
+  .faq-section .faq-question__text {
+    font-size: 1rem;
+  }
+
+  .faq-section .faq-answer {
+    padding: 0 70px 22px;
+  }
+
+  .faq-section .faq-answer p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .faq-section {
+    padding: 1rem 1.25rem 3.5rem;
+  }
+
+  .faq-section .faq-header {
+    margin-bottom: 2rem;
+  }
+
+  .faq-section .faq-headline {
+    font-size: clamp(1.65rem, 5.5vw, 2rem);
+    line-height: 1.3;
+  }
+
+  .faq-section .faq-list {
+    max-width: 560px;
+    gap: 12px;
+  }
+
+  .faq-section .faq-item {
+    border-radius: 14px;
+  }
+
+  .faq-section .faq-question {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr) 26px;
+    min-height: 76px;
+    padding: 16px 14px;
+    gap: 10px;
+  }
+
+  .faq-section .faq-question__number {
+    height: 28px;
+    border-radius: 9px;
+    font-size: 0.68rem;
+  }
+
+  .faq-section .faq-question__text {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .faq-section .faq-question__toggle {
+    height: 26px;
+  }
+
+  .faq-section .faq-question__toggle::before,
+  .faq-section .faq-question__toggle::after {
+    top: 12px;
+    left: 7px;
+    width: 12px;
+  }
+
+  .faq-section .faq-answer {
+    padding: 0 16px 18px;
+  }
+
+  .faq-section .faq-answer p {
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+}
+
+@media (max-width: 360px) {
+  .faq-section .faq-question {
+    grid-template-columns: 26px minmax(0, 1fr) 24px;
+    padding: 14px 12px;
+    gap: 8px;
+  }
+
+  .faq-section .faq-question__number {
+    height: 26px;
+  }
+
+  .faq-section .faq-question__toggle {
+    height: 24px;
+  }
+
+  .faq-section .faq-question__toggle::before,
+  .faq-section .faq-question__toggle::after {
+    top: 11px;
+    left: 6px;
+  }
+
+  .faq-section .faq-answer {
+    padding: 0 14px 16px;
+  }
+}
+
 /* Final workshop invitation */
 .closing-section {
   padding: 0 1.5rem 2.5rem;
@@ -4751,7 +5188,7 @@ body {
   margin: 0 auto 22px;
   color: #fff;
   font-size: clamp(1.9rem, 3.5vw, 2.6rem);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1.25;
   letter-spacing: -0.02em;
 }
@@ -4946,6 +5383,156 @@ body {
   .closing-signoff {
     margin-top: 24px;
     font-size: 0.85rem;
+  }
+}
+
+/* Closing section adjustments are limited to tablet and phone screens. */
+@media (max-width: 1023px) {
+  .closing-section {
+    padding: 1rem 1.5rem 2.5rem;
+  }
+
+  .closing-section .closing-panel {
+    padding: 44px 32px 36px;
+  }
+
+  .closing-section .closing-content {
+    min-width: 0;
+  }
+
+  .closing-section .closing-description {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+
+  .closing-section .closing-highlights {
+    font-size: 0.9rem;
+  }
+
+  .closing-section .closing-cta {
+    min-height: 64px;
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+  }
+
+  .closing-section .closing-start-date {
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 640px) {
+  .closing-section {
+    padding: 1rem 0.5rem 2rem;
+  }
+
+  .closing-section .closing-panel {
+    padding: 32px 20px 28px;
+    border-radius: 22px;
+  }
+
+  .closing-section .closing-headline {
+    font-size: clamp(1.65rem, 5.5vw, 2rem);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .closing-section .closing-description {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+
+  .closing-section .closing-highlights {
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px;
+    font-size: 0.83rem;
+    text-align: left;
+  }
+
+  .closing-section .closing-highlights svg {
+    width: 18px;
+    height: 18px;
+    margin-top: 1px;
+  }
+
+  .closing-section .closing-price {
+    gap: 4px 10px;
+    margin: 24px 0;
+  }
+
+  .closing-section .closing-price > span {
+    font-size: 1rem;
+  }
+
+  .closing-section .closing-price strong {
+    font-size: clamp(3rem, 12vw, 3.75rem);
+  }
+
+  .closing-section .workshop-countdown__heading {
+    font-size: 0.8rem;
+  }
+
+  .closing-section .workshop-countdown__grid {
+    gap: 0.4rem;
+  }
+
+  .closing-section .workshop-countdown__unit {
+    padding: 0.8rem 0.2rem;
+    gap: 0.35rem;
+  }
+
+  .closing-section .workshop-countdown__value {
+    font-size: clamp(1.5rem, 7vw, 1.8rem);
+  }
+
+  .closing-section .workshop-countdown__unit-label {
+    font-size: 0.52rem;
+    letter-spacing: 0.03em;
+  }
+
+  .closing-section .workshop-countdown__date {
+    font-size: 0.65rem;
+  }
+
+  .closing-section .closing-cta {
+    padding: 0.95rem 0.85rem;
+    font-size: clamp(0.9rem, 2.7vw, 1rem);
+  }
+
+  .closing-section .closing-seats {
+    padding: 7px 10px;
+  }
+
+  .closing-section .closing-seats img {
+    width: 220px;
+  }
+
+  .closing-section .closing-start-date {
+    align-items: flex-start;
+    font-size: 0.78rem;
+  }
+
+  .closing-section .closing-start-date strong {
+    min-width: 0;
+    text-wrap: balance;
+  }
+
+  .closing-section .closing-start-date time {
+    white-space: nowrap;
+  }
+
+  .closing-section .closing-signoff {
+    margin-top: 24px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .closing-section .closing-panel {
+    padding: 28px 16px 24px;
   }
 }
 
