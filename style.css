@@ -138,7 +138,7 @@ body {
 /* ── Hero Section ── */
 .hero {
   min-height: 100vh;
-  padding: 5rem 1.5rem;
+  padding: 7.5rem 1.5rem 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -269,6 +269,14 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.hero__seats {
+  display: block;
+  align-self: center;
+  width: 240px;
+  max-width: 100%;
+  height: auto;
 }
 
 /* ── Video Window Mockup ── */
@@ -3031,6 +3039,22 @@ body {
 
 .closing-cta__ending {
   white-space: nowrap;
+}
+
+.closing-seats {
+  width: fit-content;
+  max-width: 100%;
+  margin: 16px auto 0;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #fff;
+}
+
+.closing-seats img {
+  display: block;
+  width: 240px;
+  max-width: 100%;
+  height: auto;
 }
 
 .closing-start-date {
