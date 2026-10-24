@@ -62,3 +62,51 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   if (document.fonts) document.fonts.ready.then(reserveFooterSpace);
 })();
+
+// Both countdowns share the fixed workshop start, including its IST offset.
+(function () {
+  const countdowns = Array.from(document.querySelectorAll('[data-workshop-countdown]'));
+  if (!countdowns.length) return;
+  const startTime = Date.parse(countdowns[0].dataset.workshopStart);
+  if (!Number.isFinite(startTime)) return;
+
+  const displays = countdowns.map(function (root) {
+    return {
+      root: root,
+      label: root.querySelector('[data-countdown-label]'),
+      values: Array.from(root.querySelectorAll('[data-countdown-value]'))
+    };
+  });
+  let intervalId;
+
+  function updateCountdown() {
+    const total = Math.max(0, Math.ceil((startTime - Date.now()) / 1000));
+    const remaining = {
+      days: Math.floor(total / 86400),
+      hours: Math.floor(total % 86400 / 3600),
+      minutes: Math.floor(total % 3600 / 60),
+      seconds: total % 60
+    };
+
+    displays.forEach(function (display) {
+      display.root.dataset.countdownState = total > 0 ? 'active' : 'started';
+      display.label.textContent = total > 0 ? 'Workshop starts in' : 'Workshop has started';
+      display.root.setAttribute('aria-label', total > 0
+        ? remaining.days + ' days, ' + remaining.hours + ' hours, ' + remaining.minutes + ' minutes, ' + remaining.seconds + ' seconds until the workshop starts'
+        : 'Workshop has started');
+      display.values.forEach(function (value) {
+        const next = String(remaining[value.dataset.countdownValue]).padStart(2, '0');
+        if (value.textContent !== next) value.textContent = next;
+      });
+    });
+
+    if (total === 0 && intervalId !== undefined) window.clearInterval(intervalId);
+  }
+
+  updateCountdown();
+  if (Date.now() < startTime) intervalId = window.setInterval(updateCountdown, 1000);
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) updateCountdown();
+  });
+  window.addEventListener('pageshow', updateCountdown);
+})();
