@@ -1337,12 +1337,12 @@ body {
 }
 
 .audience-card__media {
-  height: 210px;
+  height: 190px;
   margin: 0.75rem 0.75rem 0;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding: 1.5rem 1.25rem 0;
+  padding: 0.25rem 1.25rem 0;
   position: relative;
   isolation: isolate;
 }
@@ -1351,7 +1351,7 @@ body {
   content: "";
   position: absolute;
   z-index: -1;
-  inset: 2rem 0 0.75rem;
+  inset: 0.75rem 0 0.75rem;
   border-radius: 1rem;
   background: linear-gradient(145deg, #eef4ff, #e9eaff);
 }
@@ -1361,17 +1361,9 @@ body {
   background: linear-gradient(145deg, #f2f0ff, #e9efff);
 }
 
-.audience-card__number {
-  position: absolute;
-  top: 0.5rem;
-  left: 0.75rem;
-  color: var(--blue-deep);
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-}
-
 .audience-card__img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 100%;
   max-height: 100%;
@@ -1502,6 +1494,21 @@ body {
 }
 
 /* Responsive adjustments */
+@media (min-width: 901px) {
+  .audience-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .audience-grid > .audience-card {
+    grid-column: span 2;
+  }
+
+  .audience-grid > .audience-card:nth-child(4),
+  .audience-grid > .audience-card:nth-child(5) {
+    grid-column: span 3;
+  }
+}
+
 @media (max-width: 900px) {
   .audience-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1542,12 +1549,6 @@ body {
   .audience-card__media::before {
     inset: 1.5rem 0 0;
     border-radius: 0.8rem;
-  }
-
-  .audience-card__number {
-    top: 0.2rem;
-    left: 0.5rem;
-    font-size: 0.65rem;
   }
 
   .audience-card__body {
