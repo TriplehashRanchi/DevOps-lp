@@ -3122,3 +3122,150 @@ body {
     font-size: 0.85rem;
   }
 }
+
+/* Sticky workshop registration */
+html {
+  scroll-padding-bottom: calc(var(--sticky-enrolment-height, 100px) + 16px);
+}
+
+.sticky-enrolment-spacer {
+  height: var(--sticky-enrolment-height, calc(100px + env(safe-area-inset-bottom, 0px)));
+}
+
+.sticky-enrolment {
+  position: fixed;
+  z-index: 1000;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 12px max(1.5rem, env(safe-area-inset-left, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(1.5rem, env(safe-area-inset-right, 0px));
+  border-top: 1px solid rgba(46, 103, 245, 0.12);
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 -6px 28px rgba(15, 23, 42, 0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.sticky-enrolment__container {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.sticky-enrolment__details {
+  flex: 1;
+  min-width: 0;
+}
+
+.sticky-enrolment__title {
+  margin: 0 0 4px;
+  color: var(--text-strong);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.sticky-enrolment__date {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.sticky-enrolment__date svg {
+  flex-shrink: 0;
+  color: var(--blue-mid);
+}
+
+.sticky-enrolment__date time {
+  white-space: nowrap;
+}
+
+.sticky-enrolment__offer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.sticky-enrolment__price {
+  color: var(--blue-deep);
+  font-size: 1.8rem;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.sticky-enrolment__label {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+
+.sticky-enrolment__cta {
+  flex: 0 1 280px;
+  gap: 12px;
+  width: auto;
+  min-width: 0;
+  min-height: 56px;
+  padding: 0.85rem 1.5rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+
+.sticky-enrolment__cta span {
+  flex-shrink: 0;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.sticky-enrolment__cta:focus-visible {
+  outline: 2px solid var(--blue-mid);
+  outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+  .sticky-enrolment {
+    padding: 10px max(1rem, env(safe-area-inset-left, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(1rem, env(safe-area-inset-right, 0px));
+  }
+
+  .sticky-enrolment__container {
+    gap: 18px;
+  }
+
+  .sticky-enrolment__details {
+    display: none;
+  }
+
+  .sticky-enrolment__price {
+    font-size: 1.65rem;
+  }
+
+  .sticky-enrolment__label {
+    font-size: 0.64rem;
+  }
+
+  .sticky-enrolment__cta {
+    flex: 1;
+    gap: 8px;
+    min-height: 52px;
+    padding: 0.8rem 12px;
+    font-size: 0.82rem;
+    letter-spacing: 0;
+  }
+}
+
+@media print {
+  .sticky-enrolment,
+  .sticky-enrolment-spacer {
+    display: none;
+  }
+}

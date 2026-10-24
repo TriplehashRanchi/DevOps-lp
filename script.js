@@ -43,3 +43,22 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initialise Day 1
   activateTab('1');
 });
+// Keep the last page content above the fixed registration bar.
+(function () {
+  const registrationBar = document.querySelector('.sticky-enrolment');
+  if (!registrationBar) return;
+
+  function reserveFooterSpace() {
+    const height = Math.ceil(registrationBar.getBoundingClientRect().height);
+    document.documentElement.style.setProperty('--sticky-enrolment-height', height + 'px');
+  }
+
+  reserveFooterSpace();
+  if ('ResizeObserver' in window) {
+    const footerObserver = new ResizeObserver(reserveFooterSpace);
+    footerObserver.observe(registrationBar);
+  } else {
+    window.addEventListener('resize', reserveFooterSpace, { passive: true });
+  }
+  if (document.fonts) document.fonts.ready.then(reserveFooterSpace);
+})();
