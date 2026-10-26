@@ -1,0 +1,5 @@
+Tool: built-in image_gen, transparent_background=true
+Reference: audience-student.png
+Asset: audience-qa-tester.png
+
+Use case: precise-object-edit. Asset type: transparent illustration for the third audience card of a DevOps workshop landing page. Edit target: the provided audience-student.png. Replace the student/graduation theme with a QA software tester while preserving the same friendly 3D cartoon style, young Indian woman with long dark hair and yellow top, soft polished shading, waist-up composition and similar overall framing. Replace her book with an open laptop showing a simple green checkmark and small bug symbol, replace graduation cap and stack of books with a compact software testing checklist panel with green checkmarks. Remove the lightbulb. Character inspecting software tests with a friendly confident expression. Keep the entire character, laptop and checklist inside frame. Transparent background, no white backdrop, no text or labels or watermark. Match the scale and horizontal composition of the original so it fits the same audience card. Output one final PNG.
