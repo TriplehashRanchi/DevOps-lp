@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://api.github.com; object-src 'none'; base-uri 'none'">
+  <title>Workshop Batch Updates | Cloud Train</title>
+  <link rel="stylesheet" href="admin.css">
+  <script src="batch-config.js" defer></script>
+  <script src="schedule.js" defer></script>
+  <script src="admin.js" defer></script>
+</head>
+<body>
+  <main class="admin-shell">
+    <header class="admin-header">
+      <img src="logo.png" alt="Cloud Train" width="180" height="64">
+      <div>
+        <p class="eyebrow">Workshop administration</p>
+        <h1>Update the next batch</h1>
+        <p>Set the first Monday and batch number once. All public dates, live sessions, and countdowns follow automatically.</p>
+      </div>
+    </header>
+
+    <div class="admin-layout">
+      <section class="panel" aria-labelledby="settings-heading">
+        <h2 id="settings-heading">Batch settings</h2>
+        <form id="batch-form" novalidate>
+          <div class="field-grid">
+            <label>Batch number <input id="batch-number" name="batchNumber" type="number" min="1" max="999999" step="1" required></label>
+            <label>First Monday <input id="start-date" name="startDate" type="date" required></label>
+            <label>Recorded lesson release (IST) <input id="recorded-time" name="recordedTime" type="time" step="60" required></label>
+            <label>Live session time (IST) <input id="live-time" name="liveTime" type="time" step="60" required></label>
+          </div>
+
+          <div class="publish-box">
+            <h3>Publish for all visitors</h3>
+            <p>Enter a GitHub fine-grained token with <strong>Contents: Read and write</strong> access to the <strong>TriplehashRanchi/DevOps-lp</strong> repository. The token stays in this page only while it is open.</p>
+            <label>GitHub token <input id="github-token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…" required></label>
+            <button id="publish-button" type="submit">Publish batch settings</button>
+            <p class="publish-note">Publishing commits one settings file to the main branch. Vercel deploys it when this project uses that repository and branch for production.</p>
+          </div>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="panel preview-panel" aria-labelledby="preview-heading">
+        <h2 id="preview-heading">Schedule preview</h2>
+        <p id="preview-summary" class="preview-summary"></p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">Day</th><th scope="col">Date</th><th scope="col">Format</th><th scope="col">Time</th></tr></thead>
+            <tbody id="schedule-preview"></tbody>
+          </table>
+        </div>
+        <p class="preview-note">Days 1–5: recorded Monday–Friday · Saturday–Sunday: break · Day 6: live Monday · Day 7: recorded Tuesday · Day 8: closing live Wednesday.</p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

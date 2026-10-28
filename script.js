@@ -1,4 +1,54 @@
-// No custom scripts needed for YouTube embed
+// The Wistia hero player loads through its embed scripts in index.html.
+
+// Render every batch date from the shared schedule configuration.
+(function () {
+  if (!window.WORKSHOP_BATCH || !window.WorkshopSchedule) return;
+  let schedule;
+  try {
+    schedule = window.WorkshopSchedule.getSchedule(window.WORKSHOP_BATCH);
+  } catch (error) {
+    console.error("Invalid workshop batch configuration:", error);
+    return;
+  }
+
+  function updateText(selector, value) {
+    document.querySelectorAll(selector).forEach(function (element) {
+      element.textContent = value;
+    });
+  }
+
+  updateText("[data-batch-number]", schedule.config.batchNumber);
+  updateText("[data-batch-start-date]", schedule.days[0].full);
+  updateText("[data-batch-start-datetime]", schedule.startDisplay);
+  updateText("[data-sticky-start-date]", schedule.days[0].compact + " " + schedule.days[0].iso.slice(0, 4));
+  updateText("[data-live-dates]", schedule.liveDates);
+  updateText("[data-live-time]", schedule.liveTimeDisplay);
+  updateText("[data-recorded-time]", window.WorkshopSchedule.formatTime(schedule.config.recordedTime));
+
+  document.querySelectorAll("[data-batch-start-date], [data-sticky-start-date]").forEach(function (element) {
+    element.dateTime = schedule.days[0].iso;
+  });
+  document.querySelectorAll("[data-batch-start-datetime]").forEach(function (element) {
+    element.dateTime = schedule.startInstant;
+  });
+  document.querySelectorAll("[data-workshop-countdown]").forEach(function (element) {
+    element.dataset.workshopStart = schedule.startInstant;
+  });
+  document.querySelectorAll("[data-day-date]").forEach(function (element) {
+    const day = schedule.days[Number(element.dataset.dayDate) - 1];
+    if (!day) return;
+    element.textContent = day.weekday;
+    element.dateTime = day.iso;
+  });
+  document.querySelectorAll("[data-day-date-label]").forEach(function (element) {
+    const day = schedule.days[Number(element.dataset.dayDateLabel) - 1];
+    if (day) element.textContent = day.short;
+  });
+  document.querySelectorAll("[data-day8-date]").forEach(function (element) {
+    element.textContent = schedule.days[7].weekday + ", " + schedule.days[7].compact;
+    element.dateTime = schedule.days[7].iso;
+  });
+})();
 
 // Curriculum Tabs — Robust switcher
 document.addEventListener('DOMContentLoaded', function () {
@@ -63,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (document.fonts) document.fonts.ready.then(reserveFooterSpace);
 })();
 
-// Both countdowns share the fixed workshop start, including its IST offset.
+// All countdowns share the configured batch start, including its IST offset.
 (function () {
   const countdowns = Array.from(document.querySelectorAll('[data-workshop-countdown]'));
   if (!countdowns.length) return;
