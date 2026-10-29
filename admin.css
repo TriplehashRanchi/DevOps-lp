@@ -17,6 +17,7 @@ body { margin: 0; background: #f5f7fc; color: var(--ink); font: 16px/1.5 system-
 .panel { min-width: 0; padding: clamp(20px, 3vw, 32px); border: 1px solid var(--line); border-radius: 18px; background: #fff; box-shadow: 0 8px 30px rgba(20, 38, 90, .05); }
 .panel h2 { margin: 0 0 22px; font-size: 1.35rem; }
 .field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.field-wide { grid-column: 1 / -1; }
 label { display: flex; flex-direction: column; gap: 7px; font-size: .85rem; font-weight: 700; }
 input { width: 100%; min-height: 44px; padding: 9px 12px; border: 1px solid #b9c6dd; border-radius: 9px; background: #fff; color: var(--ink); font: inherit; }
 input:focus { outline: 3px solid rgba(46, 103, 245, .18); border-color: var(--blue); }
@@ -27,6 +28,9 @@ input:focus { outline: 3px solid rgba(46, 103, 245, .18); border-color: var(--bl
 .publish-box button:hover { background: #2e67f5; }
 .publish-box button:disabled { opacity: .55; cursor: wait; }
 .publish-box .publish-note { margin: 12px 0 0; }
+.publish-box .link-button { width: auto; min-height: 0; margin: 0; padding: 0; background: none; color: var(--blue); font-weight: 700; text-decoration: underline; }
+.publish-box .link-button:hover { background: none; }
+.publish-box .link-button[hidden] { display: none; }
 .form-status { min-height: 1.5em; margin: 16px 0 0; color: var(--blue); font-size: .85rem; font-weight: 700; }
 .form-status[data-state="error"] { color: #b42318; }
 .preview-summary { margin: -10px 0 16px; color: var(--muted); font-size: .9rem; }

@@ -1,15 +1,31 @@
 (function () {
-  const repository = "TriplehashRanchi/DevOps-lp";
-  const branch = "main";
-  const filePath = "batch-config.js";
-  const endpoint = "https://api.github.com/repos/" + repository + "/contents/" + filePath;
+  const passwordKey = "cloudTrainAdminPassword";
   const form = document.getElementById("batch-form");
   const status = document.getElementById("form-status");
   const summary = document.getElementById("preview-summary");
   const preview = document.getElementById("schedule-preview");
   const publishButton = document.getElementById("publish-button");
-  const tokenInput = document.getElementById("github-token");
+  const passwordInput = document.getElementById("admin-password");
+  const forgetButton = document.getElementById("forget-password");
   let loadedConfig;
+
+  function rememberPassword(value) {
+    try {
+      if (value) localStorage.setItem(passwordKey, value);
+      else localStorage.removeItem(passwordKey);
+    } catch (error) {
+      // Storage may be blocked; the password then has to be typed each visit.
+    }
+    forgetButton.hidden = !value;
+  }
+
+  function savedPassword() {
+    try {
+      return localStorage.getItem(passwordKey) || "";
+    } catch (error) {
+      return "";
+    }
+  }
 
   function setStatus(message, isError) {
     status.textContent = message;
@@ -18,10 +34,11 @@
 
   function readForm() {
     return {
-      batchNumber: Number(form.elements.batchNumber.value),
+      batchNumber: form.elements.batchNumber.value,
       startDate: form.elements.startDate.value,
       recordedTime: form.elements.recordedTime.value,
-      liveTime: form.elements.liveTime.value
+      liveTime: form.elements.liveTime.value,
+      whatsappLink: form.elements.whatsappLink.value
     };
   }
 
@@ -54,7 +71,7 @@
         const time = day.type === "Recorded" ? schedule.config.recordedTime : schedule.config.liveTime;
         addRow("Day " + day.number, day.short, day.type, window.WorkshopSchedule.formatTime(time) + " IST");
       });
-      publishButton.disabled = !tokenInput.value.trim();
+      publishButton.disabled = !passwordInput.value;
       return schedule;
     } catch (error) {
       summary.textContent = error.message;
@@ -63,54 +80,30 @@
     }
   }
 
-  function parseRemoteConfig(contents) {
-    const match = contents.match(/window\.WORKSHOP_BATCH\s*=\s*(\{[\s\S]*?\})\s*;/);
-    if (!match) throw new Error("The repository settings file has an unexpected format.");
-    return window.WorkshopSchedule.validate(JSON.parse(match[1]));
-  }
-
-  function apiError(response, body) {
-    if (response.status === 401 || response.status === 403) return "GitHub rejected the token. Check its repository Contents permission.";
-    if (response.status === 404) return "Settings file not found. Deploy this admin page and batch-config.js to the repository first.";
-    if (response.status === 409) return "The settings changed while publishing. Reload this page and try again.";
-    return body && body.message ? "GitHub: " + body.message : "GitHub returned status " + response.status + ".";
-  }
-
-  async function publish(schedule, token) {
-    const headers = {
-      "Accept": "application/vnd.github+json",
-      "Authorization": "Bearer " + token,
-      "X-GitHub-Api-Version": "2026-03-10"
-    };
-    const currentResponse = await fetch(endpoint + "?ref=" + branch, { headers, cache: "no-store" });
-    const currentBody = await currentResponse.json();
-    if (!currentResponse.ok) throw new Error(apiError(currentResponse, currentBody));
-
-    const remoteContents = atob(currentBody.content.replace(/\s/g, ""));
-    const remoteConfig = parseRemoteConfig(remoteContents);
-    if (JSON.stringify(remoteConfig) !== JSON.stringify(loadedConfig)) {
-      throw new Error("Another batch update was published since this page loaded. Reload to review it before publishing.");
-    }
-
-    const contents = "// Update this file through admin.html to publish a new workshop batch.\n" +
-      "window.WORKSHOP_BATCH = " + JSON.stringify(schedule.config, null, 2) + ";\n";
-    const saveResponse = await fetch(endpoint, {
-      method: "PUT",
-      headers: { ...headers, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        message: "Update workshop batch " + schedule.config.batchNumber,
-        content: btoa(contents),
-        sha: currentBody.sha,
-        branch
-      })
+  async function publish(schedule, password) {
+    const response = await fetch("/api/update-batch", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password, config: schedule.config, previous: loadedConfig })
     });
-    const saveBody = await saveResponse.json();
-    if (!saveResponse.ok) throw new Error(apiError(saveResponse, saveBody));
+    let body = {};
+    try {
+      body = await response.json();
+    } catch (error) {
+      // Fall through to the generic status message below.
+    }
+    if (response.status === 401) {
+      rememberPassword("");
+      passwordInput.value = "";
+      throw new Error("Wrong admin password.");
+    }
+    if (!response.ok) throw new Error(body.error || "Server returned status " + response.status + ".");
+
+    rememberPassword(password);
     loadedConfig = schedule.config;
     window.WORKSHOP_BATCH = schedule.config;
-    tokenInput.value = "";
     renderPreview();
-    setStatus("Batch " + schedule.config.batchNumber + " was committed. Check the Vercel deployment, then refresh the public page.", false);
+    setStatus("Batch " + schedule.config.batchNumber + " published. The public page updates in about a minute.", false);
   }
 
   try {
@@ -119,6 +112,9 @@
     form.elements.startDate.value = loadedConfig.startDate;
     form.elements.recordedTime.value = loadedConfig.recordedTime;
     form.elements.liveTime.value = loadedConfig.liveTime;
+    form.elements.whatsappLink.value = loadedConfig.whatsappLink;
+    passwordInput.value = savedPassword();
+    forgetButton.hidden = !passwordInput.value;
     renderPreview();
   } catch (error) {
     setStatus("Cannot load batch settings: " + error.message, true);
@@ -126,20 +122,26 @@
     return;
   }
 
+  forgetButton.addEventListener("click", function () {
+    rememberPassword("");
+    passwordInput.value = "";
+    renderPreview();
+    setStatus("Password removed from this device.", false);
+  });
   form.addEventListener("input", renderPreview);
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
     const schedule = renderPreview();
-    const token = tokenInput.value.trim();
-    if (!schedule || !token) {
-      setStatus("Enter valid batch settings and a GitHub token.", true);
+    const password = passwordInput.value;
+    if (!schedule || !password) {
+      setStatus("Enter valid batch settings and the admin password.", true);
       return;
     }
-    if (!window.confirm("Publish Batch " + schedule.config.batchNumber + " starting " + schedule.days[0].full + "? This commits batch-config.js to main.")) return;
+    if (!window.confirm("Publish Batch " + schedule.config.batchNumber + " starting " + schedule.days[0].full + "?")) return;
     publishButton.disabled = true;
     setStatus("Publishing batch settings…", false);
     try {
-      await publish(schedule, token);
+      await publish(schedule, password);
     } catch (error) {
       setStatus(error.message || "Could not publish batch settings.", true);
       renderPreview();

@@ -19,16 +19,26 @@
     return value;
   }
 
+  function parseWhatsappLink(value) {
+    const link = typeof value === "string" ? value.trim() : "";
+    if (!/^https:\/\/chat\.whatsapp\.com\/[A-Za-z0-9]{10,40}$/.test(link)) {
+      throw new Error("Enter a WhatsApp group invite link like https://chat.whatsapp.com/AbCd1234…");
+    }
+    return link;
+  }
+
   function validate(config) {
-    const batchNumber = Number(config.batchNumber);
-    if (!Number.isInteger(batchNumber) || batchNumber < 1 || batchNumber > 999999) {
-      throw new Error("Batch number must be a positive whole number.");
+    // Older configs stored the batch as a number; it is now free-form text like "376" or "DO-376".
+    const batchNumber = String(config.batchNumber ?? "").trim();
+    if (!/^[A-Za-z0-9][A-Za-z0-9 -]{0,19}$/.test(batchNumber)) {
+      throw new Error("Batch number must be 1–20 letters, numbers, spaces or hyphens.");
     }
     const start = parseDate(config.startDate);
     if (start.getUTCDay() !== 1) throw new Error("The first learning day must be a Monday.");
     parseTime(config.recordedTime, "recorded lesson time");
     parseTime(config.liveTime, "live session time");
-    return { batchNumber, startDate: config.startDate, recordedTime: config.recordedTime, liveTime: config.liveTime };
+    const whatsappLink = parseWhatsappLink(config.whatsappLink);
+    return { batchNumber, startDate: config.startDate, recordedTime: config.recordedTime, liveTime: config.liveTime, whatsappLink };
   }
 
   function formatTime(value) {
@@ -52,15 +62,14 @@
         full: fullDate.format(date)
       };
     });
-    const liveDates = days[5].iso.slice(0, 7) === days[7].iso.slice(0, 7)
-      ? days[5].iso.slice(8).replace(/^0/, "") + " & " + days[7].compact
-      : days[5].compact + " & " + days[7].compact;
+    // Joining instructions go out at 5 PM IST the day before the batch starts.
+    const eve = new Date(first.getTime() - 86400000);
     return {
       config,
       days,
+      instructionsDisplay: longWeekday.format(eve) + ", " + eve.getUTCDate() + " " + shortMonth.format(eve) + " · 5 PM IST",
       startInstant: days[0].iso + "T" + config.recordedTime + ":00+05:30",
       startDisplay: days[0].full + " · " + formatTime(config.recordedTime) + " IST",
-      liveDates,
       liveTimeDisplay: formatTime(config.liveTime),
       closingDisplay: days[7].short + " · " + formatTime(config.liveTime) + " IST"
     };

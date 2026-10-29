@@ -213,7 +213,7 @@ body {
 /* ── Hero Section ── */
 .hero {
   --hero-marquee-height: 44px;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   padding: calc(var(--hero-marquee-height) + 24px) 1.5rem 5rem;
   display: flex;
   align-items: flex-start;
@@ -604,6 +604,15 @@ body {
   border-radius: 0.8rem;
   overflow: hidden;
   background: #000;
+}
+
+.video-wrap video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
 }
 
 .video-wrap wistia-player {
@@ -5001,17 +5010,33 @@ body {
 }
 
 .testimonials-header {
-  max-width: 780px;
+  max-width: 900px;
   margin: 0 auto 3rem;
   text-align: center;
 }
 
+.testimonials-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 0 20px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(46, 103, 245, 0.08);
+  color: var(--blue-deep);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+}
+
 .testimonials-headline {
   color: var(--text-primary);
-  font-size: clamp(2rem, 3.8vw, 2.75rem);
-  font-weight: 900;
+  font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+  font-weight: 800;
   line-height: 1.25;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
 }
 
 .testimonials-subtext {
@@ -5023,51 +5048,162 @@ body {
 
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
 }
 
-.testimonial-player:last-child {
-  grid-column: 1 / -1;
-  width: calc(50% - 0.625rem);
-  justify-self: center;
-}
-
-.testimonial-player {
+.testimonial-tile {
+  position: relative;
   min-width: 0;
   margin: 0;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: 1rem;
-  background: #fff;
-  box-shadow: 0 8px 28px rgba(30, 41, 59, 0.07);
+  border-radius: 22px;
+  background: var(--bg-surface);
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.testimonial-player video {
+.testimonial-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(26, 26, 224, 0.1);
+}
+
+.testimonial-tile--video {
+  background: #0b1220;
+}
+
+.testimonial-tile--video video {
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  background: #000;
+  height: 100%;
+  object-fit: cover;
 }
 
-.testimonial-player figcaption {
-  padding: 0.85rem 1.1rem;
-  color: var(--text-strong);
-  font-size: 0.85rem;
+/* Soft brand tint over the poster until the video starts. */
+.testimonial-tile--video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(26, 26, 224, 0) 45%, rgba(11, 15, 25, 0.45));
+  pointer-events: none;
+}
+
+.testimonial-tile__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-mid), var(--blue-deep));
+  color: #fff;
+  box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.28), 0 10px 24px rgba(26, 26, 224, 0.35);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.testimonial-tile__play:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 0 0 0 12px rgba(255, 255, 255, 0.32), 0 12px 28px rgba(26, 26, 224, 0.45);
+}
+
+.testimonial-tile__play:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
+.testimonial-tile__play svg {
+  width: 24px;
+  height: 24px;
+  margin-left: 3px;
+}
+
+.testimonial-tile.is-playing::after,
+.testimonial-tile.is-playing .testimonial-tile__play {
+  display: none;
+}
+
+/* Text tiles take the row height set by the videos, but can grow if a quote needs more room. */
+.testimonial-tile--text {
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: auto;
+  padding: 28px;
+}
+
+.testimonial-tile__mark {
+  height: 1.8rem;
+  color: var(--blue-deep);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 3.4rem;
   font-weight: 700;
+  line-height: 1;
 }
 
-@media (max-width: 900px) {
+.testimonial-tile blockquote {
+  margin: 0.4rem 0 20px;
+  color: var(--text-strong);
+  font-size: 0.98rem;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.testimonial-tile__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #eef2fb;
+}
+
+.testimonial-tile__avatar {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-mid), var(--blue-deep));
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.testimonial-tile__identity {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.testimonial-tile__identity strong {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.testimonial-tile__stars {
+  color: #f5a623;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+}
+
+@media (max-width: 960px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
   .testimonials-grid {
     grid-template-columns: minmax(0, 1fr);
-    max-width: 680px;
-    margin: 0 auto;
-  }
-
-  .testimonial-player:last-child {
-    grid-column: auto;
-    width: 100%;
   }
 }
 
@@ -6080,6 +6216,38 @@ body {
   .closing-section .closing-panel {
     padding: 28px 16px 24px;
   }
+}
+
+/* Legal disclaimer at the end of the page */
+.site-disclaimer {
+  padding: 2rem 1.5rem 2.5rem;
+  border-top: 1px solid var(--border);
+  background: var(--bg-page);
+}
+
+.site-disclaimer__container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.site-disclaimer p {
+  margin: 0 0 0.9rem;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  line-height: 1.7;
+}
+
+.site-disclaimer .site-disclaimer__legal {
+  margin: 1.25rem 0 0;
+  color: var(--text-strong);
+  font-weight: 600;
+}
+
+.site-disclaimer a {
+  color: var(--blue-deep);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 /* Sticky workshop registration */

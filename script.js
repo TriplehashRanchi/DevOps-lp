@@ -21,7 +21,6 @@
   updateText("[data-batch-start-date]", schedule.days[0].full);
   updateText("[data-batch-start-datetime]", schedule.startDisplay);
   updateText("[data-sticky-start-date]", schedule.days[0].compact + " " + schedule.days[0].iso.slice(0, 4));
-  updateText("[data-live-dates]", schedule.liveDates);
   updateText("[data-live-time]", schedule.liveTimeDisplay);
   updateText("[data-recorded-time]", window.WorkshopSchedule.formatTime(schedule.config.recordedTime));
 
@@ -111,6 +110,34 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('resize', reserveFooterSpace, { passive: true });
   }
   if (document.fonts) document.fonts.ready.then(reserveFooterSpace);
+})();
+
+// Testimonial videos start from a custom play button, then switch to native controls.
+(function () {
+  const tiles = Array.from(document.querySelectorAll('.testimonial-tile--video'));
+
+  tiles.forEach(function (tile) {
+    const video = tile.querySelector('video');
+    const button = tile.querySelector('.testimonial-tile__play');
+    if (!video || !button) return;
+
+    // Autoplaying tiles hide the overlay as soon as playback starts.
+    video.addEventListener('play', function () {
+      tile.classList.add('is-playing');
+    });
+
+    button.addEventListener('click', function () {
+      // Only one testimonial plays at a time.
+      tiles.forEach(function (other) {
+        const otherVideo = other.querySelector('video');
+        if (otherVideo && otherVideo !== video) otherVideo.pause();
+      });
+      tile.classList.add('is-playing');
+      video.controls = true;
+      video.play();
+      video.focus();
+    });
+  });
 })();
 
 // All countdowns share the configured batch start, including its IST offset.
